@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <h2>Add a Tweet With Model Form</h2>
+
+    <div class="customForm">
+        <form action="{% url 'tweet:add_tweet_model_form' %}" method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Post tweet</button>
+        </form>
+    </div>
+{% endblock %}

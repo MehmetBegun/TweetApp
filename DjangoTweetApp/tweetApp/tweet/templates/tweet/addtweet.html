@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <form action="{% url 'tweet:add_tweet' %}" method="POST">
+        {% csrf_token %}
+        <div class="container">
+            <div class="mb-3">
+                <label for="tweet" class="form-label" style="color: rgb(0, 0, 0);">Tweet</label>
+                <input type="text" class="form-control" id="tweet" name="tweet" style="width: 25%;">
+            </div>
+            <button type="submit" class="btn btn-primary">Post tweet</button>
+        </div>
+    </form>
+{% endblock %}

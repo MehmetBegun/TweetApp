@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+  <div class="row row-cols-1 row-cols-md-4">
+    {% for tweet in tweets %}
+      <div class="container" style="padding: 10px;">
+        <div class="card" style="width: 20rem;">
+          <img src="{% static 'tweet/twitter.png' %}" class="card-img-top">
+          <div class="card-body">
+            <h5 class="card-title" style="color: rgb(255, 4, 4);">
+              {{ tweet.user.username }}
+            </h5>
+            <p class="card-text">
+              {{ tweet.tweet }}
+            </p>
+
+            <div class="card-footer" style="padding: 5px 5px;">
+              <small class="text-body-secondary">Last updated 10s ago</small>
+            </div>
+
+            {% if tweet.user.username == user.username %}
+              <button style="margin: 10px 10px;">
+                <a href="{% url 'tweet:delete_tweet' tweetID=tweet.id %}" class="btn btn-danger">Delete</a>
+              </button>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endblock %}
